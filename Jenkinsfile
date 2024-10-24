@@ -33,7 +33,7 @@ pipeline {
             steps {
                 script {
                     echo 'Running Docker container...'
-                    bat 'docker run -d --name testcontainer -p 5000:5000 testimage:latest'
+                    bat 'docker run -d --name testcontainer1 -p 5000:5000 testimage:latest'
                 }
             }
         }
