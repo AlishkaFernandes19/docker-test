@@ -1,10 +1,10 @@
 pipeline{
     agent any
     stages{
-    stage("test"){
+    stage("build docker file"){
         steps{
             script{
-                  echo "work now yarrrrrrrrrrrrrrrrrrrrrrr"
+                 
             }
         }
     
