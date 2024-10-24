@@ -15,7 +15,7 @@ pipeline{
         steps{
             script{
                  echo "building"
-                bat 'docker build -t image:latest'
+                bat 'docker build -t image:latest .'
             }
         }
     
