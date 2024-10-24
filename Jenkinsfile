@@ -4,7 +4,7 @@ pipeline{
     stage("test"){
         steps{
             script{
-                  echo "work now yarr"
+                  echo "work now yarrrrrrrrrrrrrrrrrrrrrrr"
             }
         }
     
