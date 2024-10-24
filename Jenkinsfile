@@ -1,7 +1,8 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-         stage('Clean Workspace') {
+
+    stages {
+        stage('Clean Workspace') {
             steps {
                 script {
                     echo 'Cleaning workspace...'
@@ -9,34 +10,32 @@ pipeline{
                 }
             }
         }
-    stage("cloning"){
-        steps{
-            script{
-                 echo "cloning"
-                 bat 'git clone "https://github.com/AlishkaFernandes19/docker-test.git"'
-            }
-        }
-    
-    }
 
-   stage("build"){
-        steps{
-            script{
-                 echo "building"
-                bat 'docker build -t image:latest .'
+        stage('Clone Repository') {
+            steps {
+                script {
+                    echo 'Cloning repository...'
+                    bat 'git clone "https://github.com/AlishkaFernandes/Jenkins-pipeline.git"'
+                }
             }
         }
-    
-    }
 
-    stage("run docker container"){
-        steps{
-            script{
-                 echo "building"
-                bat 'docker run -d --name testcontainer -p 5000:5000 image:latest'
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    echo 'Building Docker image...'
+                    bat 'docker build -t testimage:latest .'
+                }
             }
         }
-    
+
+        stage('Run Docker Container') {
+            steps {
+                script {
+                    echo 'Running Docker container...'
+                    bat 'docker run -d --name testcontainer -p 5000:5000 testimage:latest'
+                }
+            }
+        }
     }
-}
 }
